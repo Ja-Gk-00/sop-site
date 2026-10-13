@@ -143,7 +143,7 @@ W takiej konfiguracji wywołanie polecenia `make` kompiluje program wypisujący 
 Od tego momentu edytor powinien poprawnie analizować i podświetlać kod.  
 
 **Uwaga!** Koniecznym jest by w środowisku nie było żadnych pomocniczych narzędzi AI (w VS Code domyślnie jest zainstalowany GitHub Copilot, niemniej jednak trzeba się zalogować + narzędzie to domyślnie nie podpowiada w trakcie manualnego pisania kodu). Oczywiście instalacja dodatkowych rozszerzeń z agentami AI jest dość odradzana.  
-Łatwym sposobem na wyłączenie jakichkolwiek pomocy związanych z AI jest: wciśnięcie `Ctrl +` , oraz wpisanie `disable ai features` oraz zaznaczenie `chat.disableAIFeatures`.
+Łatwym sposobem na wyłączenie jakichkolwiek pomocy związanych z AI jest: wciśnięcie `Ctrl + ,` (Control plus przecinek), oraz wpisanie `disable ai features` oraz zaznaczenie `chat.disableAIFeatures`.
 
 ![](/img/vsc14.png) 
 

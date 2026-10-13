@@ -144,7 +144,7 @@ From this point on, the editor should analyze and highlight the code correctly.
 
 **Note!** It is necessary to ensure that no AI-assisted tools are active in the environment. In newer versions of VS Code, GitHub Copilot features are available built in, but using them requires activation and signing in. To be safe, they should be disabled. Installing additional extensions with AI agents is not allowed.
 
-An easy way to disable AI-related features is to press `Ctrl + ,`, type `disable ai features` in the settings search bar, and then enable the `Chat: Disable AI Features` option, which sets `chat.disableAIFeatures` to `true`.
+An easy way to disable AI-related features is to press `Ctrl + ,` (Control plus comma), type `disable ai features` in the settings search bar, and then enable the `Chat: Disable AI Features` option, which sets `chat.disableAIFeatures` to `true`.
 
 ![](/img/vsc14.png)
 
