@@ -381,7 +381,7 @@ Przy użyciu wspomnianych wcześniej funkcji `stat` i `lstat` możemy sprawdzać
 Funkcja `chmod` (`man 3p chmod`) pozwala nam je ustawiać. Sygnatura jest taka sama jak `mkdir` wyżej:
 
 ```
-int mkdir(const char *path, mode_t mode);
+int chmod(const char *path, mode_t mode);
 ```
 
 Należy pamiętać, że żeby zmienić uprawnienia nasz proces musi mieć uprawnienia do zapisu danego pliku.
