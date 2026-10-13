@@ -122,9 +122,9 @@ Next, install the downloaded extension in the editor. Open the Extensions tab (`
 
 ![](/img/vsc2_OSS.png)
 
-This installs an extension that makes working with C easier.
+This installs an extension that makes working with C easier.  
 
-The rest of the tutorial is the same for both versions of the editor.
+The rest of the tutorial is the same for both versions of the editor.  
 
 The next extension to install is **Makefile Tools**. It is also developed by Microsoft, but unlike C/C++, it is available in Code OSS's default extension registry. In both versions of the editor, install it as usual: open the Extensions tab (`Ctrl + Shift + X`), search for **Makefile Tools**, and click *Install*.
 
