@@ -122,9 +122,9 @@ Następnie instalujemy pobrane rozszerzenie w edytorze. Otwieramy zakładkę roz
 
 ![](/img/vsc2_OSS.png)
 
-W ten sposób instalujemy rozszerzenie ułatwiające pracę z językiem C.
+W ten sposób instalujemy rozszerzenie ułatwiające pracę z językiem C.  
 
-Kolejna część tutoriala jest już taka sama dla obu wersji edytora.
+Kolejna część tutoriala jest już taka sama dla obu wersji edytora.  
 
 Następnym rozszerzeniem do zainstalowania będzie **Makefile Tools**. Jest ono również rozwijane przez Microsoft, ale w przeciwieństwie do C/C++ jest dostępne w domyślnym katalogu rozszerzeń Code OSS. W obu wersjach edytora instalujemy je standardowo: otwieramy zakładkę rozszerzeń (`Ctrl + Shift + X`), wyszukujemy **Makefile Tools** i klikamy *Install*.
 
