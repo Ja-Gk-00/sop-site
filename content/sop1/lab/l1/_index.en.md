@@ -11,6 +11,11 @@ This tutorial contains the explanations for the used functions and their paramet
 It is still only a surface-level tutorial and it is **vital that you read the man pages** to familiarize yourself and understand all of the details.
 {{< /hint >}}
 
+This tutorial covers filesystem operations using the high-level API provided by the C language and its POSIX extensions.
+This API is characterized by its use of file paths and the `DIR` and `FILE` structures.
+There is also a low-level POSIX API that works with file descriptors, which we will cover in the next lab.
+You should already be familiar with the standard C functions from Programming 1; here, we will only briefly review them.
+It is worth revisiting the material from that course, for example using [cppreference](https://en.cppreference.com/w/c/io).
 
 ## Browsing a directory
 
@@ -320,6 +325,81 @@ ENOENT indicates a non-existent file, so we can’t delete it if it didn’t exi
 
 - Call `srand` once with a unique seed; in this program the time in seconds is sufficient.
 
+## Other filesystem operations
+
+### Creating a directory
+
+The `mkdir` function creates directories (`man 3p mkdir`):
+
+```
+int mkdir(const char *path, mode_t mode);
+```
+
+It takes a directory path and permissions, and creates an empty directory if successful.
+Directories need execute (`x`) permission, which allows traversing the directory and accessing files and directories inside it.
+
+### Permissions
+
+The previously discussed `stat` and `lstat` functions can be used to check file permissions.
+The `chmod` function (`man 3p chmod`) changes them:
+
+```
+int chmod(const char *path, mode_t mode);
+```
+
+To change a file's permissions, our process must have permission to write to that file.
+The `access` function (`man 3p access`) can be used to check whether a file exists and whether we have the required access:
+
+```
+int access(const char *path, int amode);
+```
+
+Note that `amode` is not the same as the `mode` parameter of `chmod` and `mkdir`.
+It accepts one or more of the following flags, combined with `|`, depending on what we want to check: `F_OK` (existence), `R_OK` (read), `W_OK` (write), and `X_OK` (execute).
+
+The `chown` function can change a file's owner. We will not cover it because its use requires superuser privileges.
+
+### Links
+
+POSIX systems have two kinds of links: hard links and symbolic links (symlinks).
+
+A hard link is a reference to an inode; from the API's point of view, it is simply another name for the same file.
+All hard-link names are equivalent. Some files have only one name in the filesystem, while others have several.
+The `link` function creates hard links (`man 3p link`).
+
+Hard links are useful but can also be dangerous. For example, a hard link may be placed in a public directory and give unauthorized users access to a file.
+In general, we will not use them in the lab.
+
+A symbolic link is a special kind of file containing a path to another file.
+It works differently from a hard link and has different limitations.
+For example, if the target file is renamed, the symlink may become invalid because its target can no longer be found.
+Hard links are equivalent names for the same file, whereas symbolic links are separate references to their targets.
+
+The `symlink` function creates symbolic links (`man 3p symlink`):
+
+```
+int symlink(const char *path1, const char *path2);
+```
+
+This creates a symbolic link at `path2` pointing to `path1` (`path2 -> path1`, where `->` means “points to”).
+The equivalent terminal command is `ln -s <TARGET> <PATH>` (`man 1 ln`).
+You can use `ln` to experiment with symlinks; they can be confusing.
+
+Consider this example: our working directory contains two subdirectories, `a` and `b`. We create `file.txt` in `a` and want to create a symlink to it in `b`, named `file.txt_bak`.
+We run `ln -s a/file.txt b/file.txt_bak`. Will it work?
+
+{{< answer >}}
+No. The symlink `b/file.txt_bak` will be created, but it will point to the relative path `a/file.txt`. From the symlink's location, that path is invalid; the target is at `../a/file.txt`.
+
+To create the link correctly from our working directory, run `ln -s ../a/file.txt b/file.txt_bak`. This may look unintuitive at first, but the target path is interpreted relative to the symlink. Alternatively, enter directory `b` and run `ln -s ../a/file.txt file.txt_bak` there. Use `ls -l` to see where a symlink points.
+{{</ answer >}}
+
+Because symbolic links contain paths, it matters whether the path is absolute or relative.
+Depending on which is used, a link may or may not remain valid when the target or link is renamed or moved. Consider how moving the target, the symlink, or both together (for example, by moving their containing directory) affects a relative or absolute link.
+
+If you are still unsure about symlinks, practice with terminal commands such as `ls -l`, `ln -s`, `cd`, `touch`, `echo`, and `cat`.
+They have direct equivalents in C, as discussed above.
+
 ## Buffering of Standard Output
 
 ### Experiment
@@ -355,6 +435,7 @@ Do the example tasks. During the laboratory you will have more time and the star
 - [Task 1]({{< ref "/sop1/lab/l1/example1" >}}) ~75 minutes
 - [Task 2]({{< ref "/sop1/lab/l1/example2" >}}) ~75 minutes
 - [Task 3]({{< ref "/sop1/lab/l1/example3" >}}) ~120 minutes
+- [Task 4]({{< ref "/sop1/lab/l1/example4" >}}) ~130 minutes
 
 ## Source codes presented in this tutorial
 
