@@ -412,7 +412,16 @@ Działają więc w innej warstwie niż dowiązania twarde - są od nich bezpiecz
 Np. jeżeli plik na który wskazuje dowiązanie symboliczne zmieni nazwę takie dowiązanie przestanie być poprawne - plik na który wskazuje przestaje istnieć.
 W przypadku dowiązań twardych wszystkie one są równorzędne. W przypadku dowiązań symbolicznych są one tylko wskaźnikami odrębnymi od właściwego pliku.
 
-Do tworzenia dowiązań twardych służy funkcja `symlink` (`man 3p symlink`).
+Dlatego właśnie mamy dwie funkcje `stat` i `lstat` - `lstat` zwróci informację o symlinku jako o pliku, natomiast `stat` o pliku na który wskazuje.
+Do sprawdzenia, na jaki plik wskazuje dany symlink możemy też użyć funkcji `readlink` (`man 3p readlink`):
+
+```
+ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
+```
+
+Istotne w użyciu tej funkcji jest fakt, że sami musimy zaalokować bufor `buf`, w którym umieści wynik.
+
+Do tworzenia dowiązań symbolicznych służy funkcja `symlink` (`man 3p symlink`).
 
 ```
 int symlink(const char *path1, const char *path2);
