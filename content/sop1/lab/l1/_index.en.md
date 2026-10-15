@@ -375,6 +375,18 @@ It works differently from a hard link and has different limitations.
 For example, if the target file is renamed, the symlink may become invalid because its target can no longer be found.
 Hard links are equivalent names for the same file, whereas symbolic links are separate references to their targets.
 
+This is why we have two functions - `stat` and `lstat`.
+`lstat` will return information about a given symlink as a file, while `stat` about a file which the symlink points to.
+
+To check which file symlink points to we can also use `readlink` (`man 3p readlink`):
+
+```
+ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
+```
+
+It's important to remember, that we must allocate `buf`, where results will be placed, ourselves.
+
+
 The `symlink` function creates symbolic links (`man 3p symlink`):
 
 ```
