@@ -136,7 +136,7 @@ In Visual Studio Code, click `File -> Open Folder` in the upper-left corner and 
 
 With this configuration, running the `make` command compiles the program that prints `Hello world` to the standard output.  
 
-**Note!** A very important step is changing the default C standard used by the editor. Otherwise, the editor may mark some names as unknown even though the program compiles correctly. To fix this, change the default standard from `c17` to `gnu17`. To do this, press `Ctrl + Shift + P`, type `C/C++: Edit Configurations (UI)`, and press Enter. A page with compiler settings should appear. Scroll down to the `C standard` section and change the value from `c17` to `gnu17`. It should look more or less like this:
+**Note!** A very important step is changing the default C standard used by the editor. Otherwise, the editor may mark some names as unknown even though the program compiles correctly. To fix this, change the default standard from `c17` to `gnu17`. To do this, press `Ctrl + ,` (Control + comma), type `C standard` in the settings search bar, and change `c17` to `gnu17`. It should look something like this:
 
 ![](/img/vsc5.png) 
 
@@ -163,7 +163,7 @@ Press `Ctrl + ,` and type `configuration provider` in the search bar. In the `C_
 
 ![](/img/vsc8.png)
 
-Next, with the project open, press `Ctrl + Shift + P` and run the `Makefile: Configure` command. This will automatically configure Makefile support in VS Code. Then press `Ctrl + Shift + P` again, run the `Makefile: Set the target to be built by make` command, and select `all`.
+Next, with the project open, press `Ctrl + Shift + P` and run the `Makefile: Configure` command. This will automatically configure Makefile support in VS Code.
 
 Next, we will configure an optional but very useful feature: automatic code formatting when saving C files. During the labs, our project will include the following `.clang-format` file.
 

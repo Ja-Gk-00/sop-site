@@ -136,14 +136,14 @@ W Visual Studio Code klikamy w lewym górnym rogu `File -> Open Folder` i wybier
 
 W takiej konfiguracji wywołanie polecenia `make` kompiluje program wypisujący `Hello world` na standardowe wyjście.  
 
-**Uwaga!** Bardzo ważnym krokiem jest zmiana domyślnego standardu C, którego używa edytor! W przeciwnym razie edytor podświetla część nazw jako nieznane, mimo że program poprawnie się kompiluje! By to rozwiązać należy zmienić domyślny standard `c17` na `gnu17`. By to zrobić klikamy skrót klawiszowy `Ctrl + Shift + P`, wpisujemy `C/C++: Edit Configurations (UI)` oraz naciśnijmy enter. Powinna pojawić się nam strona z ustawieniami kompilatora. Przewijamy stronę w dół, gdzie w zakładce `C standard` zmieniamy z `c17` na `gnu17`. Powinno wyglądać to mniej więcej tak:
+**Uwaga!** Bardzo ważnym krokiem jest zmiana domyślnego standardu C, którego używa edytor! W przeciwnym razie edytor podświetla część nazw jako nieznane, mimo że program poprawnie się kompiluje! By to rozwiązać należy zmienić domyślny standard `c17` na `gnu17`. By to zrobić klikamy skrót klawiszowy `Ctrl + ,` (Control plus przecinek), wpisujemy `C standard` w wyszukiwarkę opcji i zmieniamy z `c17` na `gnu17`. Powinno wyglądać to mniej więcej tak:
 
 ![](/img/vsc5.png) 
 
 Od tego momentu edytor powinien poprawnie analizować i podświetlać kod.  
 
 **Uwaga!** Koniecznym jest by w środowisku nie było żadnych pomocniczych narzędzi AI (w VS Code domyślnie jest zainstalowany GitHub Copilot, niemniej jednak trzeba się zalogować + narzędzie to domyślnie nie podpowiada w trakcie manualnego pisania kodu). Oczywiście instalacja dodatkowych rozszerzeń z agentami AI jest dość odradzana.  
-Łatwym sposobem na wyłączenie jakichkolwiek pomocy związanych z AI jest: wciśnięcie `Ctrl + ,` (Control plus przecinek), oraz wpisanie `disable ai features` oraz zaznaczenie `chat.disableAIFeatures`.
+Łatwym sposobem na wyłączenie jakichkolwiek pomocy związanych z AI jest: wciśnięcie `Ctrl + ,`, oraz wpisanie `disable ai features` oraz zaznaczenie `chat.disableAIFeatures`.
 
 ![](/img/vsc14.png) 
 
@@ -162,7 +162,7 @@ Wciskamy `Ctrl + ,` po czym wpisujemy w wyszukiwarkę `configuration provider`. 
 
 ![](/img/vsc8.png)
 
-Następnie (w otworzonym projekcie) wciskamy skrót `Ctrl + Shift + P` oraz uruchamiamy polecenie `Makefile: Configure`. Dokona to automatycznej konfiguracji opcji Makefile do VS Code. Następnie ponownie wciskamy skrót `Ctrl + Shift + P` oraz uruchamiamy komendę `Makefile: Set the target to be built by make` oraz wybieramy `all`.
+Następnie (w otworzonym projekcie) wciskamy skrót `Ctrl + Shift + P` oraz uruchamiamy polecenie `Makefile: Configure`. Dokona to automatycznej konfiguracji opcji Makefile do VS Code.
 
 Następnie skonfigurujemy opcjonalną, ale bardzo przydatną funkcję automatycznego formatowania kodu przy zapisie plików C. W trakcie laboratoriów, w naszym projekcie będziemy mieli dostęp do pliku konfiguracyjnego `.clang-format`.
 
